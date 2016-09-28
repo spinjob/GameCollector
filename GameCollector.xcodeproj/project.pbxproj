@@ -64,8 +64,8 @@
 				68CB32EA1D9B589200C68CE7 /* ViewController.swift */,
 				68566ED21D9B5DE40018C605 /* GameViewController.swift */,
 				68CB32EC1D9B589200C68CE7 /* Main.storyboard */,
-				68CB32F21D9B589200C68CE7 /* Assets.xcassets */,
 				68CB32F41D9B589200C68CE7 /* LaunchScreen.storyboard */,
+				68CB32F21D9B589200C68CE7 /* Assets.xcassets */,
 				68CB32F71D9B589200C68CE7 /* Info.plist */,
 				68CB32EF1D9B589200C68CE7 /* GameCollector.xcdatamodeld */,
 				68566ED01D9B5CC40018C605 /* Icon_120 copy.png */,
@@ -105,6 +105,7 @@
 				TargetAttributes = {
 					68CB32E41D9B589200C68CE7 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = S9J57RY573;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -272,6 +273,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = S9J57RY573;
 				INFOPLIST_FILE = GameCollector/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SMJ.GameCollector;
@@ -284,6 +286,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = S9J57RY573;
 				INFOPLIST_FILE = GameCollector/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SMJ.GameCollector;

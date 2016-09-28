@@ -13,8 +13,14 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBOutlet weak var gameImageView: UIImageView!
     @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var addUpdateButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    
+
     
     var imagePicker = UIImagePickerController ()
+    var game : Game? = nil
+    
     
     
     override func viewDidLoad() {
@@ -23,7 +29,19 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         imagePicker.delegate = self
         
 
-        // Do any additional setup after loading the view.
+        if game != nil {
+            
+            gameImageView.image = UIImage(data: game!.image as! Data)
+            titleTextField.text = game!.title
+            addUpdateButton.setTitle("Update", for: .normal)
+            
+            
+        } else{
+            
+        deleteButton.isHidden = true
+            
+        }
+        
     }
 
     @IBAction func photosTapped(_ sender: AnyObject) {
@@ -43,15 +61,40 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     @IBAction func cameraTapped(_ sender: AnyObject) {
+        imagePicker.sourceType = .camera
+        
+        present(imagePicker, animated: true, completion: nil)
     }
     
+    
     @IBAction func addTapped(_ sender: AnyObject) {
+        
+        if game != nil {
+            
+        game!.title = titleTextField.text
+        game!.image = UIImagePNGRepresentation(gameImageView.image!) as NSData!
+        
+        
+        }   else {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         let game = Game(context: context)
         game.title = titleTextField.text
         game.image = UIImagePNGRepresentation(gameImageView.image!) as NSData!
+        
+    	}
     
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
+        navigationController!.popViewController(animated: true)
+        
+    }
+    
+    @IBAction func deleteTapped(_ sender: AnyObject) {
+         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        context.delete(game!)
+        
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         
         navigationController!.popViewController(animated: true)
@@ -61,18 +104,10 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+       
     }
     
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
